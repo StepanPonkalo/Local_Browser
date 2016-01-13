@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "File Sistem";
+}
+@section Scripts{
+}
+<div ng-app="myApp">
+    <div ng-controller="myAppCtrl">
+        <table class="table-striped" align="center" border="1" width="90%">
+            <tr><th>Less 10Mb</th><th>10Mb-50Mb</th><th>More 100Mb</th></tr>
+            <tr><td>{{result.FilesLess10}}</td><td>{{result.FilesLess50More10}}</td><td>{{result.FilesMore100}}</td></tr>
+            <tr>
+                <td align="left" colspan="3">
+                    
+                    <br>
+                    Current Path:{{result.currentPath}}
+                    <br>
+                    <br>
+                    <input type="submit" ng-click="up(result.PrevPath)" class="btn btn-link" value=".." />
+                    <div ng-repeat="model in result.allDrives">
+                        <input type="submit" ng-click="up(model._name)" class="btn btn-link" value="{{model._name}}" />
+                    </div>
+                    <div ng-repeat="model in result.FolderInfo">
+                        <input type="submit" ng-click="up(model.FullPath)" class="btn btn-link" value="{{model.OriginalPath}}" />
+                    </div>
+                    <div ng-repeat="model in result.FilesInFolder">
+                        <p>{{model}}</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
